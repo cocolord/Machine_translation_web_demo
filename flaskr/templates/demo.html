@@ -1,0 +1,82 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'stylesheet.css') }}" type="text/css"/>
+
+<title>demo</title>
+
+    <script src="{{ url_for('static', filename = 'js/main.js') }}" charset="utf-8"></script>
+    <script src="{{ url_for('static', filename = 'js/vue.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'js/form.js') }}"></script>
+</head>
+<body  onkeydown="KeySearch()">
+<!--图片超链接,跳转到主页-->
+<a href = "//www.baidu.com" target="_blank">
+    <img id = "logo" src="{{url_for('static', filename = 'logo.png') }}" alt="Logo here" align="left"; >
+</a>
+<div id="app">
+    <div class="header"><h1 class="title">欢迎使用文言文翻译</h1>
+    <!--<div class = "input_image">-->
+        <div class="couplet-button_group">
+            <form method="post" action="/">
+                <input type="text" title="输入文言文" placeholder="请输入文言文" class="couplet-input" id="inputText" autofocus="autofocus" name="yuanwen">
+                    <!--一个隐藏的文本框-->
+                    <input id="hiddenText" type="text" style="display:none" />
+                <!--<script>var input = getInput()</script>-->
+                <button type="button" onclick = "show()" class="couplet-btn" >翻译</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="left">
+        <div class="couplet-text couplet-text_up">
+            <div class="couplet-hd1" style="display:none" id="display1">原文 </div>
+            <!--<img src="image/1.gif">原文</div>-->
+            <div class="couplet-bd" id="yuanwen"></div>
+        </div>
+        <div class="couplet-text couplet-text_down">
+            <div class="couplet-hd2" style="display: none" id = "display2">统计翻译 </div>
+            <!--<img src="image/1.gif">统计翻译</div>   -->
+            <!--<p id ="xiandaiwen" align="center"></p>-->
+            <div class="couplet-bd" id="jiqifanyi"></div>
+        </div>
+        <div class="couplet-text couplet-text_down">
+            <div class="couplet-hd3" style="display: none" id = "display3">神经翻译 </div>
+            <!--<img src="image/1.gif">神经翻译</div>-->
+            <!--<p id ="xiandaiwen" align="center"></p>-->
+            <div class="couplet-bd" id="shenjingwangluo"></div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="couplet-text couplet-text_down">
+            <div class="couplet-hd4" style="display: none" id = "display4">字典 </div>
+            <!--<p id ="xiandaiwen" align="center"></p>-->
+            <div class="couplet-bd" id="zidian"></div>
+        </div>
+    </div>
+    <div class="middle" id = "middle" style="display: none"></div>
+
+    <!--一个隐藏的文本框-->
+    <!--<input id="hiddenText" type="text" style="display:none" />-->
+    <!--原来的content-->
+    <!--<div class="content">-->
+        <!---->
+        <!--<div class="couplet-text couplet-text_up">-->
+        <!--<div class="couplet-hd" style="display:none">原文</div>-->
+            <!--&lt;!&ndash;<p id ="wenyanwen" align="center"></p>&ndash;&gt;-->
+        <!--<div class="couplet-bd" id="yuanwen"></div>-->
+    <!--<br>-->
+    <!--</div>-->
+        <!--<div class="couplet-text couplet-text_down">-->
+            <!--<div class="couplet-hd" style="display: none">机器翻译</div>-->
+            <!--&lt;!&ndash;<p id ="xiandaiwen" align="center"></p>&ndash;&gt;-->
+            <!--<div class="couplet-bd" id="jiqifanyi"></div>-->
+        <!--</div>-->
+        <!--<div class="couplet-hd" style="display: none">神经网络翻译</div>-->
+        <!--&lt;!&ndash;<p id ="xiandaiwen" align="center"></p>&ndash;&gt;-->
+        <!--<div class="couplet-bd" id="shenjingwangluo"></div>-->
+    <!--</div>-->
+
+    <div class="footer"></div>
+    </div>
+</div>
+</body>

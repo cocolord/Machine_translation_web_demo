@@ -1,0 +1,218 @@
+* { padding: 0; margin: 0; box-sizing: border-box; }
+
+
+html, body { height: 100%; }
+@font-face {
+    /* font-properties */
+    font-family: shufa;
+    /*src:url("{{ url_for('../', filename = 'font/shufafont.ttf')}}",_external=True)*/
+    src:url(shufafont.ttf)
+    /*src:url("../font/shufafont.ttf")*/
+}
+
+/*body { background-image: url("image/background2.jpg"),url("image/background2down.jpg"); background-repeat: repeat-x,repeat; background-color: #eee; font-family:shufa, "Helvetica Neue", "PingFang SC", Helvetica, Arial, "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", sans-serif; }*/
+body {
+    background-image: url(background2.jpg),
+    url(background2down.jpg);
+    background-size: cover;
+    background-repeat: no-repeat,repeat;
+    background-color: #eee;
+    font-family:shufa, "Helvetica Neue", "PingFang SC", Helvetica, Arial, "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", sans-serif;
+}
+#app {
+    max-width: 720px;
+    height: 100%;
+    margin: 0 auto;
+}
+.header {
+    padding-top: 10px;
+    margin-bottom: 50px;
+}
+
+.title {
+    margin-bottom: 60px;
+    margin-top: 150px;
+    font-size: 34px;
+    color: #484848;
+    text-align: center;
+}
+.search_base{ font-family:"PingFang SC";
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 110px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #fff;
+    border: none;
+    font-size: 20px;
+    /*background: url('base.jpg')*/
+    }
+.desc {
+    margin-bottom: 20px;
+    color: #898989;
+    font-size: 16px;
+    text-align: center;
+}
+
+.couplet-button_group {
+    font-family:shufa;
+    position: relative;
+    margin: 0 auto;
+    max-width: 600px;
+    width: 90%;
+    height: 40px;
+    font-size: 0;
+    background-color: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.couplet-button_group::after {
+    font-family:shufa;
+    content: " ";
+    display: table;
+    clear: both;
+}
+.couplet-button_group .couplet-input {
+    font-family:shufa;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 110px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #fff;
+    border: none;
+    font-size: 20px; }
+.couplet-button_group .couplet-btn { font-family:shufa;
+    position: absolute;
+    top: 0; right: 0; width: 100px; height: 40px; line-height: 40px;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    background: url(icon33.gif)
+}
+
+.left
+{
+    /*padding-left: 40px;*/
+    /*padding-right: 60px;*/
+    float: left;
+    width: 45%;
+    font-size: 20px;
+    height: 53%;
+}
+.middle
+{
+    float: left;
+    background-size: cover;
+    background-image: url(asd.png);
+    background-repeat: repeat-y;
+    margin:0px;
+    padding:0px;;
+    width: 10%;
+    height:52%;
+}
+.right {
+    /*padding-left: 100px;*/
+    float: right;
+    width: 45%;
+    font-size: 20px;
+    height: 53%;
+}
+.content { padding: 0 50px; margin: 0 auto; max-width: 600px; min-height: 160px; }
+
+@media (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) { .content { min-height: 160px; } }
+@media (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2) { .content { min-height: 180px; } }
+@media (device-height: 736px) and (-webkit-min-device-pixel-ratio: 2) { .content { min-height: 200px; } }
+.couplet-text {
+    margin-bottom: 10px;
+    display: flex;
+}
+.couplet-text .couplet-hd1
+{
+    font-family:"shufa";
+    background: url(1.gif);
+    text-indent: -9999px;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    padding-right: 10px;
+}
+.couplet-text .couplet-hd2
+{
+    font-family:"shufa";
+    background: url(2.gif);
+    text-indent: -9999px;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    padding-right: 10px;
+}
+.couplet-text .couplet-hd3
+{
+    font-family:"shufa";
+    background: url(33.gif);
+    text-indent: -9999px;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    padding-right: 10px;
+}
+.couplet-text .couplet-hd4
+{
+    font-family:"shufa";
+    background: url(4.gif);
+    text-indent: -9999px;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    padding-right: 10px;
+}
+.couplet-text .couplet-bd {
+    font-family:"华文楷体";
+    font-size:22px;
+    flex: 1;
+}
+.couplet-text span {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    font-size: 34px;
+    vertical-align: middle;
+    /*background-image: url("image/asd.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover; }
+
+.footer { position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.footer a { color: #333; }
+
+@media screen and (max-height: 600px) { .footer { display: none; } }
+#loading { position: absolute; left: 50%; margin-left: -25px; height: 50px; width: 50px; border: 1px solid #000; border-right: 0; border-bottom: 0; border-radius: 50px; -webkit-transition: all 0.5s ease-in; -webkit-animation-name: rotate; -webkit-animation-duration: 1.0s; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: linear; }
+
+@-webkit-keyframes rotate { from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); } }
+
+.article {
+    padding: 30px;
+}
+
+.article div {
+    margin: 20px;
+}
+
+.article img {
+    width: 40%;
+    margin-left: 30%;
+}
