@@ -186,7 +186,8 @@ body {
     vertical-align: middle;
     /*background-image: url("image/asd.jpg"); */
     background-repeat: no-repeat;
-    background-size: cover; }
+    background-size: cover;
+}
 
 .footer { position: fixed;
     bottom: 20px;

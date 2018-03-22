@@ -3,9 +3,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename = 'stylesheet.css') }}" type="text/css"/>
 
 <title>demo</title>
-    <script>
-        var yuanwen = {{ yuanwen }}
-    </script>
     <script src="{{ url_for('static', filename = 'js/main.js') }}" charset="utf-8"></script>
     <script src="{{ url_for('static', filename = 'js/vue.js') }}"></script>
     <script src="{{ url_for('static', filename = 'js/form.js') }}"></script>
@@ -30,7 +27,7 @@
             </form>
         </div>
     </div>
-<iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>
+<!--<iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>-->
     <div class="left">
         <div class="couplet-text couplet-text_up">
             <div class="couplet-hd1" style="display:none" id="display1">原文 </div>
