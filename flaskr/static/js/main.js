@@ -32,10 +32,10 @@ function show()
     if(i5.style.display=="none"){
         i5.style.display = "";
     }
-    document.getElementById('yuanwen').innerText = a;
-    document.getElementById('jiqifanyi').innerText = a;
-    document.getElementById('shenjingwangluo').innerText = a;
-    document.getElementById('zidian').innerText = a;
+//    document.getElementById('yuanwen').innerText = a;
+//    document.getElementById('jiqifanyi').innerText = a;
+//    document.getElementById('shenjingwangluo').innerText = a;
+//    document.getElementById('zidian').innerText = a;
     return a;
 }
 function str_to_html(str) {
