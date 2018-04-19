@@ -3,20 +3,16 @@
 
 html, body { height: 100%; }
 @font-face {
-    /* font-properties */
     font-family: shufa;
-    /*src:url("{{ url_for('../', filename = 'font/shufafont.ttf')}}",_external=True)*/
     src:url(shufafont.ttf)
-    /*src:url("../font/shufafont.ttf")*/
 }
 
-/*body { background-image: url("image/background2.jpg"),url("image/background2down.jpg"); background-repeat: repeat-x,repeat; background-color: #eee; font-family:shufa, "Helvetica Neue", "PingFang SC", Helvetica, Arial, "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", sans-serif; }*/
 body {
-    background-image: url(background2.jpg),
-    url(background2down.jpg);
-    background-size: cover;
-    background-repeat: no-repeat,repeat;
+    background-image: url(background2.jpg);
     background-color: #eee;
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
     font-family:shufa, "Helvetica Neue", "PingFang SC", Helvetica, Arial, "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", sans-serif;
 }
 #app {
@@ -36,7 +32,8 @@ body {
     color: #484848;
     text-align: center;
 }
-.search_base{ font-family:"PingFang SC";
+.search_base{ 
+    font-family:"PingFang SC";
     width: 100%;
     padding-left: 10px;
     padding-right: 110px;
@@ -45,8 +42,8 @@ body {
     background-color: #fff;
     border: none;
     font-size: 20px;
-    /*background: url('base.jpg')*/
-    }
+}
+
 .desc {
     margin-bottom: 20px;
     color: #898989;
@@ -93,6 +90,32 @@ body {
     background: url(icon33.gif)
 }
 
+#modechoose{
+    height: 72px;
+    position: relative;
+}
+
+
+.mode-btn {
+    position: absolute;
+    top: -25px; right: 330px; width: 72px; height: 72px;
+    outline: none;
+    border: none;
+    float:left;
+    background: url(0.png)
+}
+
+#mode1{
+    position: absolute;
+    left: 110px;
+}
+
+#mode2{
+    position: absolute;
+    left: 520px;
+    top: 0px;
+}
+
 .left
 {
     /*padding-left: 40px;*/
@@ -111,7 +134,8 @@ body {
     margin:0px;
     padding:0px;;
     width: 10%;
-    height:52%;
+    height: 100%;
+    margin-bottom: 0%;
 }
 .right {
     /*padding-left: 100px;*/
@@ -132,22 +156,28 @@ body {
 .couplet-text .couplet-hd1
 {
     font-family:"shufa";
-    background: url(1.gif);
+    background: url(1.png);
     text-indent: -9999px;
+    position: relative;
+    top: -15px;
     width: 60px;
     height: 60px;
     font-size: 20px;
     padding-right: 10px;
+    background-size: cover;
 }
 .couplet-text .couplet-hd2
 {
+    position: relative;
+    top: -15px;
     font-family:"shufa";
-    background: url(2.gif);
+    background: url(2.png);
     text-indent: -9999px;
     width: 60px;
     height: 60px;
     font-size: 20px;
     padding-right: 10px;
+    background-size: cover;
 }
 .couplet-text .couplet-hd3
 {
@@ -173,18 +203,21 @@ body {
     font-family:"华文楷体";
     font-size:22px;
     flex: 1;
+    word-wrap:break-word;
+    position: relative;
+    top: 60px;
+    left: -50px;
 }
 .couplet-text span {
-    margin-right: 5px;
-    margin-bottom: 5px;
+    margin-right: -10px;
+    margin-bottom: 0px;
     display: inline-block;
     width: 34px;
     height: 34px;
     line-height: 34px;
     text-align: center;
-    font-size: 34px;
+    font-size: 22px;
     vertical-align: middle;
-    /*background-image: url("image/asd.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -216,4 +249,57 @@ body {
 .article img {
     width: 40%;
     margin-left: 30%;
+}
+
+
+.tip {
+    width:700px;
+    min-height: 100px;
+    height:auto;
+    display:none;
+    background-color: #ffffff;
+    /*background-image: url(tipbackground.jpg);
+    background-size: cover;*/
+    color:#333333;
+    line-height:18px;
+    border:5px solid #96876e;
+    border-radius:30px;
+    padding:5px;
+    font-family: 'KaiTi';
+    z-index: 999;
+}  
+
+.tip pre{
+    width:670px;
+    min-height: 100px;
+    height:auto;
+    word-wrap:break-word;
+    overflow:hidden;
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: 10px; 
+    margin: 10px;
+}
+
+#arrow {
+    position: relative;
+    height: 45px;
+    width: 230px;
+    left: -60px;
+    top: -10px;
+}
+
+.word {
+    font-weight: 900;
+    cursor: pointer;
+    color: #000;
+}
+
+#select {
+    color: #FF0000;
+}
+
+#noneselect{
+    color: #000000;
 }

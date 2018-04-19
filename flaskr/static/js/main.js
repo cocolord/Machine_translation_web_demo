@@ -1,4 +1,5 @@
-// 获得输入的文字
+var modevalue = 0;
+var truedic = {}
 function getInput()
 {
     var a=document.getElementById("inputText").value;
@@ -6,38 +7,68 @@ function getInput()
         return;
     return a;
 }
+
 function show()
 {
-    var a=document.getElementById("inputText").value;
-    // alert(a);
-    // document.getElementsByClassName("couplet-hd").style.display = 'block';
-    // var i = document.getElementsByClassName("couplet-hd");
-    var i1 = document.getElementById("display1");
-    var i2 = document.getElementById("display2");
-    var i3 = document.getElementById("display3");
-    var i4 = document.getElementById("display4");
-    var i5 = document.getElementById("middle")
-    if(i1.style.display=="none"){
-        i1.style.display = "";
+    var text = $('#inputText').val();
+    if(text.length==0)
+    {
+        return;
     }
-    if(i2.style.display=="none"){
-        i2.style.display = "";
+    document.getElementById("result").style.display = "";
+    var jsondata = {
+        'yuanwen':text,
+        'mode':modevalue
     }
-    if(i3.style.display=="none"){
-        i3.style.display = "";
-    }
-    if(i4.style.display=="none"){
-        i4.style.display = "";
-    }
-    if(i5.style.display=="none"){
-        i5.style.display = "";
-    }
-//    document.getElementById('yuanwen').innerText = a;
-//    document.getElementById('jiqifanyi').innerText = a;
-//    document.getElementById('shenjingwangluo').innerText = a;
-//    document.getElementById('zidian').innerText = a;
-    return a;
+    $.ajax({
+        url: '/',
+        data: jsondata,
+        type: 'POST',
+        success: function(response){
+            //console.log(response);
+            var returnjson = eval("("+response+")");
+            var yuanwen = returnjson.yuanwen;
+            document.getElementById("yuanwen").innerHTML = yuanwen;
+            mouseaction();
+            document.getElementById("jiqifanyi").innerText = returnjson.fanyi1;
+            //document.getElementById("shenjingwangluo").innerText = returnjson.fanyi2;
+            truedic = returnjson.zidian;
+            //console.log(truedic);
+        }
+    });
+
 }
+
+function changemode()
+{
+    var curmode = document.getElementById("mode1").innerText;
+    if(curmode=='文言文')
+    {
+        document.getElementById("mode1").innerText = '现代文';
+        document.getElementById("mode2").innerText = '文言文';
+        document.getElementById("inputText").setAttribute("placeholder","请输入现代文");
+        document.body.style.background = "url(static/background1.jpg)";
+        document.body.style.backgroundRepeat="no-repeat";
+        document.body.style.backgroundSize="100% 100%"
+        document.body.style.backgroundAttachment = "fixed";
+        document.getElementById("result").style.display = "none";
+        modevalue = 1;
+    }
+    else
+    {
+        document.getElementById("mode1").innerText = '文言文';
+        document.getElementById("mode2").innerText = '现代文';
+        document.getElementById("inputText").setAttribute("placeholder","请输入文言文");
+        document.body.style.background = "url(static/background2.jpg)";
+        document.body.style.backgroundSize="100% 100%"
+        document.body.style.backgroundRepeat="no-repeat";
+        document.body.style.backgroundAttachment = "fixed";
+        document.getElementById("result").style.display = "none";
+        modevalue = 0;
+    }
+}
+
+
 function str_to_html(str) {
     var html = '';
     if (!!str) {
@@ -48,22 +79,50 @@ function str_to_html(str) {
     document.getElementById('wenyanwen').innerText = html;
     document.getElementById('xiandaiwen').innerText = html;
 }
+
 function KeySearch()
 {
-    if (event.keyCode==13)  //回车键的键值为13
+    if (event.keyCode==13)
         show();
     return ;
 }
 
-// function scrollBG(maxSize) {				//这个函数就是滚动背景的核心
-//     backgroundOffset = backgroundOffset + 1;			//将背景偏移加1点
-//     if (backgroundOffset > maxSize) backgroundOffset = 0;		//如果偏移量超过了最大值则回零
-//     bgObject.style.backgroundPosition = "0 " + backgroundOffset;	//设定背景的偏移量，使其生效
-// }
-//
-// function VerticalSlide()
-// {
-//     var backgroundOffset = 0;				//背景图片的偏移量
-//     var bgObject = eval('document.body');				//得到文挡本身的对象
-//     var ScrollTimer = window.setInterval("scrollBG(1800)", 64);	//设定每次移动背景之间的间隔
-// }
+
+function mousePosition(ev){   
+    ev = ev || window.event;   
+    if(ev.pageX || ev.pageY){   
+        return {x:ev.pageX, y:ev.pageY};   
+    }   
+    return {   
+        x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,   
+        y:ev.clientY + document.body.scrollTop - document.body.clientTop   
+    };   
+}  
+
+
+function mouseaction()
+{
+    $(".word").mouseover(function(e){  
+        var mousePos = mousePosition(e);  
+        var  xOffset = -20;  
+        var  yOffset = -20;  
+        var dict = truedic;
+        $(this).attr("id","select");
+        //console.log(dict);
+        for(var key in dict)
+        {
+            if(this.innerText==key)
+            {
+                $("#tooltip").css("display","block").css("position","absolute").css("top",(mousePos.y - yOffset) + "px").css("left",(mousePos.x + xOffset) + "px"); 
+                $("#tooltip").append('<pre>' + dict[key] + '</pre>');
+                break;
+            }
+        }   
+
+    });  
+    $(".word").mouseout(function(){  
+        $(this).attr("id","noneselect");
+        $("#tooltip").empty();  
+        $("#tooltip").css("display","none");  
+    }); 
+}
