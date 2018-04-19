@@ -20,22 +20,45 @@ function show()
         'yuanwen':text,
         'mode':modevalue
     }
-    $.ajax({
-        url: '/',
-        data: jsondata,
-        type: 'POST',
-        success: function(response){
-            //console.log(response);
+    if(modevalue==1)
+    {
+        $.ajax({
+            url: '/',
+            data: jsondata,
+            type: 'POST',
+            success: function(response){
+            console.log(response);
+            console.log("mode 1");
             var returnjson = eval("("+response+")");
-            var yuanwen = returnjson.yuanwen;
-            document.getElementById("yuanwen").innerHTML = yuanwen;
-            mouseaction();
-            document.getElementById("jiqifanyi").innerText = returnjson.fanyi1;
+            document.getElementById("yuanwen").innerHTML = returnjson.xiandaiyuanwen;
+            document.getElementById("jiqifanyi").innerHTML = returnjson.guwenfanyi;
             //document.getElementById("shenjingwangluo").innerText = returnjson.fanyi2;
             truedic = returnjson.zidian;
-            //console.log(truedic);
-        }
-    });
+            mouseaction();
+            console.log(modevalue);
+            }
+        });
+    }
+    else
+    {
+        $.ajax({
+            url: '/',
+            data: jsondata,
+            type: 'POST',
+            success: function(response){
+            console.log(response);
+            console.log("mode 0");
+            var returnjson = eval("("+response+")");
+            var yuanwen = returnjson.guwenyuanwen;
+            document.getElementById("yuanwen").innerHTML = yuanwen;
+            document.getElementById("jiqifanyi").innerHTML = returnjson.xiandaifanyi;
+            //document.getElementById("shenjingwangluo").innerText = returnjson.fanyi2;
+            truedic = returnjson.zidian;
+            mouseaction();
+            console.log(modevalue);
+            }
+        });
+    }
 
 }
 
@@ -47,8 +70,11 @@ function changemode()
         document.getElementById("mode1").innerText = '现代文';
         document.getElementById("mode2").innerText = '文言文';
         document.getElementById("inputText").setAttribute("placeholder","请输入现代文");
+        document.getElementById("middle").style.background = "url(static/mid1.png)";
+        document.getElementById("middle").style.backgroundSize="100% 100%"
+        document.getElementById("middle").style.backgroundRepeat="no-repeat";
         document.body.style.background = "url(static/background1.jpg)";
-        document.body.style.backgroundRepeat="no-repeat";
+        document.body.style.backgroundRepeat="repeat-y";
         document.body.style.backgroundSize="100% 100%"
         document.body.style.backgroundAttachment = "fixed";
         document.getElementById("result").style.display = "none";
@@ -59,6 +85,9 @@ function changemode()
         document.getElementById("mode1").innerText = '文言文';
         document.getElementById("mode2").innerText = '现代文';
         document.getElementById("inputText").setAttribute("placeholder","请输入文言文");
+        document.getElementById("middle").style.background = "url(static/mid0.png)";
+        document.getElementById("middle").style.backgroundSize="100% 100%"
+        document.getElementById("middle").style.backgroundRepeat="repeat-y";
         document.body.style.background = "url(static/background2.jpg)";
         document.body.style.backgroundSize="100% 100%"
         document.body.style.backgroundRepeat="no-repeat";
@@ -107,6 +136,10 @@ function mouseaction()
         var  xOffset = -20;  
         var  yOffset = -20;  
         var dict = truedic;
+        if(modevalue==1)
+        {
+            xOffset = xOffset - 700;
+        }
         $(this).attr("id","select");
         //console.log(dict);
         for(var key in dict)

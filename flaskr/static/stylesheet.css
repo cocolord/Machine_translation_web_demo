@@ -98,11 +98,14 @@ body {
 
 .mode-btn {
     position: absolute;
-    top: -25px; right: 330px; width: 72px; height: 72px;
+    top: -25px; right: 310px; width: 72px; height: 72px;
     outline: none;
     border: none;
     float:left;
-    background: url(0.png)
+    background: url(00.png);
+    height: 75px;
+    width: 100px;
+    background-size: cover;
 }
 
 #mode1{
@@ -112,7 +115,7 @@ body {
 
 #mode2{
     position: absolute;
-    left: 520px;
+    right: 110px;
     top: 0px;
 }
 
@@ -129,7 +132,7 @@ body {
 {
     float: left;
     background-size: cover;
-    background-image: url(asd.png);
+    background-image: url(mid0.png);
     background-repeat: repeat-y;
     margin:0px;
     padding:0px;;
@@ -160,7 +163,7 @@ body {
     text-indent: -9999px;
     position: relative;
     top: -15px;
-    width: 60px;
+    width: 85px;
     height: 60px;
     font-size: 20px;
     padding-right: 10px;
@@ -173,7 +176,7 @@ body {
     font-family:"shufa";
     background: url(2.png);
     text-indent: -9999px;
-    width: 60px;
+    width: 85px;
     height: 60px;
     font-size: 20px;
     padding-right: 10px;
