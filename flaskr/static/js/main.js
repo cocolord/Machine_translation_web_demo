@@ -27,15 +27,15 @@ function show()
             data: jsondata,
             type: 'POST',
             success: function(response){
-            console.log(response);
-            console.log("mode 1");
+            //console.log(response);
+            //console.log("mode 1");
             var returnjson = eval("("+response+")");
             document.getElementById("yuanwen").innerHTML = returnjson.xiandaiyuanwen;
             document.getElementById("jiqifanyi").innerHTML = returnjson.guwenfanyi;
             //document.getElementById("shenjingwangluo").innerText = returnjson.fanyi2;
             truedic = returnjson.zidian;
             mouseaction();
-            console.log(modevalue);
+            //console.log(modevalue);
             }
         });
     }
@@ -46,8 +46,8 @@ function show()
             data: jsondata,
             type: 'POST',
             success: function(response){
-            console.log(response);
-            console.log("mode 0");
+            //console.log(response);
+            //console.log("mode 0");
             var returnjson = eval("("+response+")");
             var yuanwen = returnjson.guwenyuanwen;
             document.getElementById("yuanwen").innerHTML = yuanwen;
@@ -55,7 +55,7 @@ function show()
             //document.getElementById("shenjingwangluo").innerText = returnjson.fanyi2;
             truedic = returnjson.zidian;
             mouseaction();
-            console.log(modevalue);
+            //console.log(modevalue);
             }
         });
     }
@@ -70,12 +70,9 @@ function changemode()
         document.getElementById("mode1").innerText = '现代文';
         document.getElementById("mode2").innerText = '文言文';
         document.getElementById("inputText").setAttribute("placeholder","请输入现代文");
-        document.getElementById("middle").style.background = "url(static/mid1.png)";
-        document.getElementById("middle").style.backgroundSize="100% 100%"
-        document.getElementById("middle").style.backgroundRepeat="no-repeat";
         document.body.style.background = "url(static/background1.jpg)";
         document.body.style.backgroundRepeat="repeat-y";
-        document.body.style.backgroundSize="100% 100%"
+        document.body.style.backgroundSize="100% 100%";
         document.body.style.backgroundAttachment = "fixed";
         document.getElementById("result").style.display = "none";
         modevalue = 1;
@@ -85,11 +82,8 @@ function changemode()
         document.getElementById("mode1").innerText = '文言文';
         document.getElementById("mode2").innerText = '现代文';
         document.getElementById("inputText").setAttribute("placeholder","请输入文言文");
-        document.getElementById("middle").style.background = "url(static/mid0.png)";
-        document.getElementById("middle").style.backgroundSize="100% 100%"
-        document.getElementById("middle").style.backgroundRepeat="repeat-y";
         document.body.style.background = "url(static/background2.jpg)";
-        document.body.style.backgroundSize="100% 100%"
+        document.body.style.backgroundSize="100% 100%";
         document.body.style.backgroundRepeat="no-repeat";
         document.body.style.backgroundAttachment = "fixed";
         document.getElementById("result").style.display = "none";
@@ -133,12 +127,12 @@ function mouseaction()
 {
     $(".word").mouseover(function(e){  
         var mousePos = mousePosition(e);  
-        var  xOffset = -20;  
-        var  yOffset = -20;  
+        var  xOffset = 20;  
+        var  yOffset = 20;  
         var dict = truedic;
         if(modevalue==1)
         {
-            xOffset = xOffset - 700;
+            xOffset = xOffset - 740;
         }
         $(this).attr("id","select");
         //console.log(dict);
@@ -146,8 +140,18 @@ function mouseaction()
         {
             if(this.innerText==key)
             {
-                $("#tooltip").css("display","block").css("position","absolute").css("top",(mousePos.y - yOffset) + "px").css("left",(mousePos.x + xOffset) + "px"); 
                 $("#tooltip").append('<pre>' + dict[key] + '</pre>');
+                var tipheight = $("#tooltip").height();
+                console.log(tipheight);
+                console.log(window.innerHeight);
+                if(mousePos.y - yOffset < window.innerHeight - tipheight)
+                {
+                    $("#tooltip").css("display","block").css("position","absolute").css("top",(mousePos.y - yOffset - 5) + "px").css("left",(mousePos.x + xOffset) + "px"); 
+                }
+                else
+                {
+                    $("#tooltip").css("display","block").css("position","absolute").css("top",(window.innerHeight - tipheight - 20) + "px").css("left",(mousePos.x + xOffset) + "px"); 
+                }
                 break;
             }
         }   

@@ -98,13 +98,14 @@ body {
 
 .mode-btn {
     position: absolute;
-    top: -25px; right: 310px; width: 72px; height: 72px;
+    top: -10px; 
+    right: 335px; 
     outline: none;
     border: none;
     float:left;
     background: url(00.png);
-    height: 75px;
-    width: 100px;
+    height: 40px;
+    width: 54px;
     background-size: cover;
 }
 
@@ -126,7 +127,11 @@ body {
     float: left;
     width: 45%;
     font-size: 20px;
-    height: 53%;
+    height: 200px;
+    border: 2px solid grey;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgba(0,0,0,0.15);
 }
 .middle
 {
@@ -145,7 +150,11 @@ body {
     float: right;
     width: 45%;
     font-size: 20px;
-    height: 53%;
+    height: 200px;
+    border: 2px solid grey;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgba(0,0,0,0.15);
 }
 .content { padding: 0 50px; margin: 0 auto; max-width: 600px; min-height: 160px; }
 
@@ -168,6 +177,7 @@ body {
     font-size: 20px;
     padding-right: 10px;
     background-size: cover;
+    left: 100px;
 }
 .couplet-text .couplet-hd2
 {
@@ -181,6 +191,7 @@ body {
     font-size: 20px;
     padding-right: 10px;
     background-size: cover;
+    left: 125px; 
 }
 .couplet-text .couplet-hd3
 {
@@ -202,6 +213,7 @@ body {
     font-size: 20px;
     padding-right: 10px;
 }
+
 .couplet-text .couplet-bd {
     font-family:"华文楷体";
     font-size:22px;
@@ -209,8 +221,8 @@ body {
     word-wrap:break-word;
     position: relative;
     top: 60px;
-    left: -50px;
 }
+
 .couplet-text span {
     margin-right: -10px;
     margin-bottom: 0px;
